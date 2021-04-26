@@ -1,0 +1,21 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+
+# Return 404 if original request is .php
+RewriteCond %{THE_REQUEST} "^[^ ]* .*?\.php[? ].*$"
+RewriteRule .* - [L,R=404]
+
+# 404 Error Page
+ErrorDocument 404 /myWeb/pages/error404.php
+
+
+# Page Re-Direct
+
+
+RewriteRule ^about pages/about
+RewriteRule ^contact pages/contact
+RewriteRule ^portfolio/html-template pages/sub-pages/html.php
+RewriteRule ^portfolio/wordpress-template pages/sub-pages/wordpress.php
+RewriteRule ^portfolio/eCommerce-template pages/sub-pages/eCommerce.php
